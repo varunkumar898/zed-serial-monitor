@@ -1,0 +1,9 @@
+[package]
+name = "zed-serial-monitor"
+version = "0.1.0"
+edition = "2021"
+description = "A serial monitor that runs in Zed's integrated terminal"
+license = "MIT"
+
+[dependencies]
+serialport = "4.7"

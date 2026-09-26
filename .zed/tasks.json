@@ -1,0 +1,19 @@
+[
+  {
+    "label": "Serial Monitor: connect",
+    "command": "cargo",
+    "args": ["run", "--release"],
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "use_new_terminal": true,
+    "reveal": "always",
+    "save": "none"
+  },
+  {
+    "label": "Serial Monitor: list ports",
+    "command": "cargo",
+    "args": ["run", "--release", "--", "--list"],
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "reveal": "always",
+    "save": "none"
+  }
+]
