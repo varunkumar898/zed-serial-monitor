@@ -2,9 +2,12 @@
 name = "zed-serial-monitor"
 version = "0.1.0"
 edition = "2021"
+autobins = false
+autoexamples = false
 
 [lib]
 crate-type = ["cdylib"]
+path = "src/lib.rs"
 
 [dependencies]
 zed_extension_api = "0.2"
