@@ -1,0 +1,3 @@
+[submodule "extensions/zed-serial-monitor"]
+	path = extensions/zed-serial-monitor
+	url = https://github.com/varunkumar898/zed-serial-monitor
