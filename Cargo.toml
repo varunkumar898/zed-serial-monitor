@@ -2,8 +2,9 @@
 name = "zed-serial-monitor"
 version = "0.1.0"
 edition = "2021"
-description = "A serial monitor that runs in Zed's integrated terminal"
-license = "MIT"
+
+[lib]
+crate-type = ["cdylib"]
 
 [dependencies]
-serialport = "4.7"
+zed_extension_api = "0.2"
