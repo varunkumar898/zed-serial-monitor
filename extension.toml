@@ -1,0 +1,7 @@
+id = "zed-serial-monitor"
+name = "Zed Serial Monitor"
+version = "0.1.0"
+schema_version = 1
+authors = ["varunkumar898"]
+description = "Live serial monitor for embedded devices in Zed editor"
+repository = "https://github.com/varunkumar898/zed-serial-monitor"
