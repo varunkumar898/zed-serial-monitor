@@ -32,6 +32,11 @@ jobs:
       - name: Build WASM Extension
         run: cargo build --target wasm32-wasip2 --release
 
+      - name: Install Linux dependencies for native serialport
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libudev-dev pkg-config
+
       - name: Run Clippy linter (Native CLI)
         run: cargo clippy --package zed-serial-monitor-cli -- -D warnings
 
