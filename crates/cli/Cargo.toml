@@ -1,0 +1,9 @@
+[package]
+name = "zed-serial-monitor-cli"
+version = "0.1.0"
+edition = "2021"
+description = "Native serial monitor CLI for Zed editor"
+license = "MIT"
+
+[dependencies]
+serialport = "4.7"

@@ -13,26 +13,34 @@ does not provide arbitrary panel registration, HTML rendering, or callbacks
 such as the `register_panel` and `on_click` pseudocode sometimes shown in
 examples. Zed tasks are the supported integration used here.
 
+## Workspace architecture
+
+This repository is structured as a dual-target Cargo workspace:
+- **`zed-serial-monitor` (root)**: The Zed WASM extension target (`wasm32-wasip2`), registering with Zed's extension API.
+- **`zed-serial-monitor-cli` (`crates/cli`)**: The native Rust CLI tool interfacing directly with host serial hardware (`serialport`), launched seamlessly via Zed tasks.
+
 ## Zed task workflow
 
 `.zed/tasks.json` defines tasks to launch the monitor interactively and list
 ports. Run `task: spawn` from the command palette, then select the desired
-Serial Monitor task. The connect task runs `cargo run --release`, prompts for a
+Serial Monitor task. The connect task runs `cargo run -p zed-serial-monitor-cli --release`, prompts for a
 device and baud rate, and displays incoming data in Zed's integrated terminal.
 
 For a direct connection, run a one-shot task or terminal command such as:
 
 ```sh
-cargo run --release -- --port /dev/ttyUSB0 --baud 115200
+cargo run -p zed-serial-monitor-cli --release -- --port /dev/ttyUSB0 --baud 115200
 ```
 
 ## Validation
 
 ```sh
 cargo fmt --check
-cargo test
-cargo build --release
-cargo run -- --list
+cargo clippy --package zed-serial-monitor-cli -- -D warnings
+cargo clippy --target wasm32-wasip2 -- -D warnings
+cargo test --package zed-serial-monitor-cli
+cargo build --target wasm32-wasip2 --release
+cargo run -p zed-serial-monitor-cli -- --list
 ```
 
 The automated tests cover CLI argument validation and port discovery. They do

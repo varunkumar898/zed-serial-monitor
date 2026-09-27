@@ -2,6 +2,8 @@
 name = "zed-serial-monitor"
 version = "0.1.0"
 edition = "2021"
+description = "Live serial monitor for embedded devices in Zed editor"
+license = "MIT"
 autobins = false
 autoexamples = false
 
@@ -11,3 +13,11 @@ path = "src/lib.rs"
 
 [dependencies]
 zed_extension_api = "0.2"
+
+[workspace]
+members = [
+    ".",
+    "crates/cli",
+]
+default-members = ["."]
+

@@ -1,7 +1,7 @@
 use std::error::Error;
 use std::io::{self, Read, Write};
 use std::process::ExitCode;
-use zed_serial_monitor::{connect_port, list_serial_ports};
+use zed_serial_monitor_cli::{connect_port, list_serial_ports};
 
 const DEFAULT_BAUD_RATE: u32 = 115_200;
 
@@ -108,9 +108,9 @@ fn print_help() {
     println!(
         "Serial Monitor for Zed\n\n\
          Usage:\n\
-         [1mzed-serial-monitor[0m                 Choose a port and baud rate interactively\n\
-         [1mzed-serial-monitor --list[0m          List detected serial ports\n\
-         [1mzed-serial-monitor -p PORT -b RATE[0m Connect directly\n\n\
+          \x1b[1mzed-serial-monitor\x1b[0m                 Choose a port and baud rate interactively\n\
+          \x1b[1mzed-serial-monitor --list\x1b[0m          List detected serial ports\n\
+          \x1b[1mzed-serial-monitor -p PORT -b RATE\x1b[0m Connect directly\n\n\
          Options:\n\
          -p, --port PORT   Serial port name\n\
          -b, --baud RATE   Baud rate (default: 115200)\n\
