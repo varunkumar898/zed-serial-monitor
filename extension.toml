@@ -5,3 +5,7 @@ schema_version = 1
 authors = ["varunkumar898"]
 description = "Live serial monitor for embedded devices in Zed editor"
 repository = "https://github.com/varunkumar898/zed-serial-monitor"
+
+[slash_commands.serial-monitor]
+description = "Show serial monitor instructions and status"
+requires_argument = false
