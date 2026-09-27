@@ -1,5 +1,5 @@
-id = "zed-serial-monitor"
-name = "Zed Serial Monitor"
+id = "serial-monitor"
+name = "Serial Monitor"
 version = "0.1.0"
 schema_version = 1
 authors = ["varunkumar898"]
