@@ -1,4 +1,6 @@
-use zed_extension_api::{self as zed, SlashCommand, SlashCommandOutput, Worktree};
+use zed_extension_api::{
+    self as zed, Command, ContextServerId, Project, Result,
+};
 
 struct SerialMonitorExtension;
 
@@ -7,19 +9,21 @@ impl zed::Extension for SerialMonitorExtension {
         Self
     }
 
-    fn run_slash_command(
-        &self,
-        command: SlashCommand,
-        _args: Vec<String>,
-        _worktree: Option<&Worktree>,
-    ) -> Result<SlashCommandOutput, String> {
-        match command.name.as_str() {
-            "serial-monitor" => Ok(SlashCommandOutput {
-                text: "Serial Monitor for Zed\n\nTo start the serial monitor, open the Command Palette and select 'task: spawn' -> 'Serial Monitor: connect'.".to_string(),
-                sections: vec![],
-            }),
-            command => Err(format!("unknown slash command: \"{command}\"")),
-        }
+    fn context_server_command(
+        &mut self,
+        _context_server_id: &ContextServerId,
+        _project: &Project,
+    ) -> Result<Command> {
+        Ok(Command {
+            command: "cargo".to_string(),
+            args: vec![
+                "run".to_string(),
+                "-p".to_string(),
+                "zed-serial-monitor-cli".to_string(),
+                "--release".to_string(),
+            ],
+            env: vec![],
+        })
     }
 }
 
